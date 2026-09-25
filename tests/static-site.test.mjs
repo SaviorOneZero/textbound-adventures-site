@@ -60,18 +60,19 @@ test("site has no scripts or stale brand identities", async () => {
   const maintained = await Promise.all([...pages, "styles.css", "robots.txt", "sitemap.xml"].map(read));
   const combined = maintained.join("\n");
   assert.doesNotMatch(combined, /<script\b/i);
-  assert.doesNotMatch(combined, /Quest Platforms?|PromiseArc|Text Adventures/i);
-  assert.match(combined, /Somewhere Next Studios™ creation/);
-  assert.match(combined, /A Sync33 Laboratories product/);
-  assert.match(combined, /© 2026 Sync33 Laboratories/);
+  assert.doesNotMatch(combined, /Quest[\s-]*Platforms?|Somewhere[\s-]*Next(?:[\s-]*Studios?)?|Promise[\s-]*Arc|\bText[\s-]+Adventures\b/i);
+  assert.doesNotMatch(combined, /Sync33 Laboratories/);
+  assert.match(combined, /Textbound Adventures™ is published by/);
+  assert.match(combined, /Sync 33 Laboratories/);
+  assert.match(combined, /© 2026 Sync 33 Laboratories/);
 });
 
 test("canonical identity and production adventure claims stay accurate", async () => {
   const maintained = await Promise.all(pages.slice(0, 3).map(read));
   const combined = maintained.join("\n");
   assert.match(combined, /https:\/\/textbound-adventures\.sync33\.com\//);
-  assert.match(combined, /A Sync33 Laboratories product/);
-  assert.doesNotMatch(combined, /Sync 33|Text Adventures|Murder on the Orient Express|In development|In progress|Planned/);
+  assert.match(combined, /Textbound Adventures™ is published by/);
+  assert.doesNotMatch(combined, /Sync33|Text Adventures|Murder on the Orient Express|In development|In progress|Planned/);
 
   const home = maintained[0];
   for (const adventure of ["Flight 217: The Endless Storm", "The Forgotten Crypt", "The Zyphur Riverventure", "The Death Star", "Nuclear Nightmare", "The Shopping Mall", "Monty Python and the Holy Grail"]) {

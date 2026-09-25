@@ -33,7 +33,7 @@ Then open <http://localhost:8000>.
 - Do not add trackers, third-party scripts, a framework, or a build system without a specific product requirement.
 - Run `node --test tests/static-site.test.mjs` before committing.
 
-The site uses the approved Textbound Adventures Brand Pack v1 palette and visual direction. Textbound Adventures™ is the customer-facing product brand, Somewhere Next Studios™ is the studio/creator brand, and Sync33 Laboratories is the current publisher and copyright owner. The site does not present Somewhere Next Studios as a legal entity or copyright owner. Website references follow the approved Sync33 Laboratories portfolio guidance without renaming compatibility-sensitive app identifiers.
+The site uses the approved Textbound Adventures Brand Pack v1 palette and visual direction. Textbound Adventures™ is the customer-facing product brand, and Sync 33 Laboratories is its publisher, studio identity, and current copyright holder. Website references use the canonical Sync 33 Laboratories spelling without renaming compatibility-sensitive app identifiers.
 
 Canonical scalable brand assets live in `dist/assets/`:
 
