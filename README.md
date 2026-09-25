@@ -13,7 +13,7 @@ dist/
   assets/             Brand mark, hero, and social image
 ```
 
-All public files live in `dist/`. GitHub Pages and the retained Sites preview both publish that directory directly.
+All public files live in `dist/`. Vercel publishes that directory at the canonical product domain. GitHub Pages continues to publish it as a compatible legacy entry point.
 
 ## Preview locally
 
@@ -33,7 +33,7 @@ Then open <http://localhost:8000>.
 - Do not add trackers, third-party scripts, a framework, or a build system without a specific product requirement.
 - Run `node --test tests/static-site.test.mjs` before committing.
 
-The site uses the approved Textbound Adventures Brand Pack v1 palette and visual direction. Textbound Adventures™ is the customer-facing product brand, Somewhere Next Studios™ is the studio/creator brand, and Sync 33 Laboratories is the current publisher and copyright owner. The site does not present Somewhere Next Studios as a legal entity or copyright owner.
+The site uses the approved Textbound Adventures Brand Pack v1 palette and visual direction. Textbound Adventures™ is the customer-facing product brand, Somewhere Next Studios™ is the studio/creator brand, and Sync33 Laboratories is the current publisher and copyright owner. The site does not present Somewhere Next Studios as a legal entity or copyright owner. Website references follow the approved Sync33 Laboratories portfolio guidance without renaming compatibility-sensitive app identifiers.
 
 Canonical scalable brand assets live in `dist/assets/`:
 
@@ -54,10 +54,10 @@ This repository contains the marketing website only. Product claims should remai
 
 ## Deployment
 
-Pushing to `main` runs `.github/workflows/pages.yml`, validates the static site, and publishes `dist/` to GitHub Pages.
+The canonical deployment is <https://textbound-adventures.sync33.com/> on Vercel. Pushing to `main` also runs `.github/workflows/pages.yml`, validates the static site, and publishes `dist/` to GitHub Pages so existing URLs remain available.
 
 Public routes:
 
-- `/textbound-adventures-site/`
-- `/textbound-adventures-site/support/`
-- `/textbound-adventures-site/privacy/`
+- `https://textbound-adventures.sync33.com/`
+- `https://textbound-adventures.sync33.com/support/`
+- `https://textbound-adventures.sync33.com/privacy/`

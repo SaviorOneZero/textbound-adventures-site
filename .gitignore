@@ -4,3 +4,5 @@
 .wrangler/
 node_modules/
 *.log
+.vercel
+.env*

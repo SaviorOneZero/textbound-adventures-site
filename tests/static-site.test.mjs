@@ -5,14 +5,14 @@ import test from "node:test";
 
 const root = resolve(import.meta.dirname, "..");
 const site = join(root, "dist");
-const pages = ["index.html", "support/index.html", "privacy/index.html"];
+const pages = ["index.html", "support/index.html", "privacy/index.html", "404.html"];
 
 async function read(relativePath) {
   return readFile(join(site, relativePath), "utf8");
 }
 
 test("all public pages have basic semantic and metadata essentials", async () => {
-  for (const page of pages) {
+  for (const page of pages.slice(0, 3)) {
     const html = await read(page);
     assert.match(html, /<html lang="en">/);
     assert.match(html, /<meta name="viewport"/);
@@ -32,11 +32,20 @@ test("local links and referenced assets resolve", async () => {
       if (/^(?:https?:|mailto:|#)/.test(value)) continue;
       const pathOnly = value.split("#")[0].split("?")[0];
       if (!pathOnly) continue;
-      const absolute = resolve(site, dirname(page), pathOnly);
+      const absolute = value.startsWith("/") ? join(site, pathOnly) : resolve(site, dirname(page), pathOnly);
       const info = await stat(absolute);
       if (info.isDirectory()) await stat(join(absolute, "index.html"));
     }
   }
+});
+
+test("404 page is accessible and points back to maintained routes", async () => {
+  const html = await read("404.html");
+  assert.match(html, /<html lang="en">/);
+  assert.match(html, /<meta name="viewport"/);
+  assert.match(html, /<main[^>]*id="main"/);
+  assert.match(html, /href="\/support\/"/);
+  assert.match(html, /href="\/privacy\/"/);
 });
 
 test("support and privacy destinations remain stable", async () => {
@@ -52,8 +61,22 @@ test("site has no scripts or stale brand identities", async () => {
   const combined = maintained.join("\n");
   assert.doesNotMatch(combined, /<script\b/i);
   assert.doesNotMatch(combined, /Quest Platforms?|PromiseArc|Text Adventures/i);
-  assert.match(combined, /Somewhere Next Studios™ creation, published by Sync 33 Laboratories/);
-  assert.match(combined, /© 2026 Sync 33 Laboratories/);
+  assert.match(combined, /Somewhere Next Studios™ creation/);
+  assert.match(combined, /A Sync33 Laboratories product/);
+  assert.match(combined, /© 2026 Sync33 Laboratories/);
+});
+
+test("canonical identity and production adventure claims stay accurate", async () => {
+  const maintained = await Promise.all(pages.slice(0, 3).map(read));
+  const combined = maintained.join("\n");
+  assert.match(combined, /https:\/\/textbound-adventures\.sync33\.com\//);
+  assert.match(combined, /A Sync33 Laboratories product/);
+  assert.doesNotMatch(combined, /Sync 33|Text Adventures|Murder on the Orient Express|In development|In progress|Planned/);
+
+  const home = maintained[0];
+  for (const adventure of ["Flight 217", "The Forgotten Crypt", "The Zyphur Riverventure", "The Death Star", "Nuclear Nightmare", "The Shopping Mall", "Monty Python and the Holy Grail"]) {
+    assert.ok(home.includes(adventure), `missing production adventure: ${adventure}`);
+  }
 });
 
 test("brand assets stay within a lightweight delivery budget", async () => {
