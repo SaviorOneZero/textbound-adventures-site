@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://savioronezero.github.io/textbound-adventures-site/sitemap.xml

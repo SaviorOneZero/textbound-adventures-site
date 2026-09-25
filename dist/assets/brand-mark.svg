@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" role="img" aria-labelledby="title">
+  <title id="title">Textbound Adventures compass and path mark</title>
+  <defs>
+    <linearGradient id="gold" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#EADCC5"/>
+      <stop offset="0.5" stop-color="#D4A450"/>
+      <stop offset="1" stop-color="#A9782F"/>
+    </linearGradient>
+  </defs>
+  <circle cx="64" cy="64" r="48" fill="#081220" stroke="#D4A450" stroke-width="3"/>
+  <path d="M64 8 72 51 112 64 72 72 64 120 56 72 16 64 56 51Z" fill="url(#gold)" stroke="#F8F6EF" stroke-width="1.5" stroke-linejoin="round"/>
+  <path d="M64 22 67 55 96 64 67 68 64 103 61 68 32 64 61 55Z" fill="#081220" stroke="#D4A450" stroke-width="2" stroke-linejoin="round"/>
+  <circle cx="64" cy="64" r="6" fill="#F8F6EF" stroke="#D4A450" stroke-width="2"/>
+  <path d="M64 70c-14 8 15 14 0 23-8 5-7 11-3 17" fill="none" stroke="#D4A450" stroke-width="4" stroke-linecap="round"/>
+</svg>
