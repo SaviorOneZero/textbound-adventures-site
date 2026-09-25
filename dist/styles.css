@@ -14,6 +14,7 @@
 *, *::before, *::after { box-sizing: border-box; }
 html { scroll-behavior: smooth; }
 body { margin: 0; overflow-x: hidden; background: var(--midnight); color: var(--ivory); font-family: var(--sans); font-size: 1rem; line-height: 1.65; }
+p, li, figcaption { overflow-wrap: anywhere; }
 img { display: block; max-width: 100%; }
 a { color: inherit; text-decoration-thickness: 1px; text-underline-offset: 0.22em; }
 a:hover { text-decoration-color: var(--gold); }
@@ -46,10 +47,10 @@ a:focus-visible { outline: 3px solid var(--gold); outline-offset: 4px; border-ra
 .hero-actions { margin-top: 2rem; display: flex; align-items: center; flex-wrap: wrap; gap: 1.25rem 1.75rem; }
 .button { display: inline-flex; align-items: center; gap: 1.25rem; padding: 0.8rem 1rem; border: 1px solid var(--gold); color: var(--ivory); font-size: 0.76rem; font-weight: 700; letter-spacing: 0.1em; text-decoration: none; text-transform: uppercase; }
 .button:hover { background: var(--gold); color: var(--midnight); }
-.availability { color: var(--mist); font-size: 0.82rem; }
 
 .intro { background: var(--ivory); color: var(--midnight); }
-.intro .eyebrow, .platform .eyebrow { color: #8a6329; }
+.intro .eyebrow { color: #8a6329; }
+.platform .eyebrow { color: #70501f; }
 .intro-grid, .game-grid, .platform-grid { display: grid; grid-template-columns: minmax(0, 1.05fr) minmax(18rem, .95fr); gap: clamp(3rem, 8vw, 8rem); align-items: start; }
 h2 { margin: 0; font-family: var(--serif); font-size: clamp(2.7rem, 5.7vw, 5rem); font-weight: 500; letter-spacing: -0.055em; line-height: 0.98; }
 .intro-copy { max-width: 35rem; padding-top: 2rem; color: #34404e; font-size: 1.07rem; }
@@ -107,8 +108,8 @@ footer { border-top: 1px solid var(--line-dark); background: var(--midnight); }
 
 @media (max-width: 50rem) {
   .wrap { width: min(100% - 2rem, 42rem); }
-  .header-inner { min-height: 4.75rem; }
-  .site-header nav { gap: 1rem; }
+  .header-inner { min-height: 4.75rem; flex-wrap: wrap; padding-block: 0.75rem; }
+  .site-header nav, .footer-main nav { gap: 1rem; flex-wrap: wrap; }
   .site-header nav a.optional-nav { display: none; }
   .hero { min-height: 41rem; align-items: end; background-position: 62% center; }
   .hero::before { background: linear-gradient(90deg, rgba(8,18,32,.94), rgba(8,18,32,.42)), linear-gradient(0deg, rgba(8,18,32,.94), transparent 65%); }
@@ -122,7 +123,7 @@ footer { border-top: 1px solid var(--line-dark); background: var(--midnight); }
   .traits p { max-width: 27rem; }
   .adventure-list { grid-template-columns: 1fr; }
   .adventure-list article, .adventure-list article:nth-child(even) { padding: 1.75rem 0; border-left: 0; }
-  .footer-main { padding-block: 1.5rem; align-items: flex-start; }
+  .footer-main { padding-block: 1.5rem; align-items: flex-start; flex-wrap: wrap; }
   .footer-main nav { flex-direction: column; align-items: flex-end; gap: 0.65rem; }
   .footer-meta { flex-direction: column; gap: 0.45rem; }
 }
@@ -133,8 +134,8 @@ footer { border-top: 1px solid var(--line-dark); background: var(--midnight); }
   .logo strong { font-size: 1.08rem; }
   .logo img { width: 34px; height: 34px; }
   .hero { min-height: 39rem; }
-  .hero h1 span { font-size: clamp(3.25rem, 18vw, 4.75rem); }
-  .hero h1 small { letter-spacing: 0.25em; }
+  .hero h1 span { font-size: min(18vw, 4.75rem); overflow-wrap: anywhere; }
+  .hero h1 small { letter-spacing: 0.2em; overflow-wrap: anywhere; }
   .hero-actions { align-items: flex-start; flex-direction: column; }
   .story-window figcaption { align-items: flex-start; flex-direction: column; }
 }
