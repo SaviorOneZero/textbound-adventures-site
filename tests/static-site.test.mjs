@@ -74,7 +74,7 @@ test("canonical identity and production adventure claims stay accurate", async (
   assert.doesNotMatch(combined, /Sync 33|Text Adventures|Murder on the Orient Express|In development|In progress|Planned/);
 
   const home = maintained[0];
-  for (const adventure of ["Flight 217", "The Forgotten Crypt", "The Zyphur Riverventure", "The Death Star", "Nuclear Nightmare", "The Shopping Mall", "Monty Python and the Holy Grail"]) {
+  for (const adventure of ["Flight 217: The Endless Storm", "The Forgotten Crypt", "The Zyphur Riverventure", "The Death Star", "Nuclear Nightmare", "The Shopping Mall", "Monty Python and the Holy Grail"]) {
     assert.ok(home.includes(adventure), `missing production adventure: ${adventure}`);
   }
 });
