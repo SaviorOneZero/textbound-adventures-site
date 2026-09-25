@@ -40,7 +40,6 @@ Brand assets are intentionally limited:
 - `brand-mark.svg` is the production web compass/path mark and favicon.
 - `hero-landscape.jpg` is an optimized, text-free treatment derived from the approved hero direction so all page copy remains accessible HTML.
 - `og.jpg` is an optimized copy of the existing social-sharing artwork, preserved until a separately approved replacement is produced.
-
 ## Product relationship
 
 This repository contains the marketing website only. Product claims should remain aligned with the separate `SaviorOneZero/wayfinder-ios` app repository and the current open branding/legal guidance.
