@@ -47,16 +47,30 @@ test("support and privacy destinations remain stable", async () => {
   assert.match(home, /href="privacy\/"/);
 });
 
-test("site has no scripts or legacy studio identities", async () => {
+test("site has no scripts or stale brand identities", async () => {
   const maintained = await Promise.all([...pages, "styles.css", "robots.txt", "sitemap.xml"].map(read));
   const combined = maintained.join("\n");
   assert.doesNotMatch(combined, /<script\b/i);
-  assert.doesNotMatch(combined, /Quest Platforms?|Somewhere Next Studios|PromiseArc/i);
+  assert.doesNotMatch(combined, /Quest Platforms?|PromiseArc|Text Adventures/i);
+  assert.match(combined, /Somewhere Next Studios™ creation, published by Sync 33 Laboratories/);
+  assert.match(combined, /© 2026 Sync 33 Laboratories/);
 });
 
 test("brand assets stay within a lightweight delivery budget", async () => {
   const hero = await stat(join(site, "assets/hero-landscape.jpg"));
   const mark = await stat(join(site, "assets/brand-mark.svg"));
+  const profile = await stat(join(site, "assets/textbound-social-profile-1024.png"));
   assert.ok(hero.size < 500_000, `hero image is ${hero.size} bytes`);
   assert.ok(mark.size < 10_000, `brand mark is ${mark.size} bytes`);
+  assert.ok(profile.size < 1_000_000, `profile image is ${profile.size} bytes`);
+
+  for (const logo of [
+    "textbound-logo-horizontal-light.svg",
+    "textbound-logo-horizontal-dark.svg",
+    "textbound-logo-stacked-light.svg",
+    "textbound-logo-stacked-dark.svg",
+  ]) {
+    const info = await stat(join(site, "assets", logo));
+    assert.ok(info.size < 20_000, `${logo} is ${info.size} bytes`);
+  }
 });
