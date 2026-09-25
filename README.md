@@ -33,13 +33,21 @@ Then open <http://localhost:8000>.
 - Do not add trackers, third-party scripts, a framework, or a build system without a specific product requirement.
 - Run `node --test tests/static-site.test.mjs` before committing.
 
-The site uses the Textbound Adventures Brand Pack v1 palette and visual direction. Textbound Adventures is the customer-facing product brand. Current publisher and copyright references follow the repository’s Sync 33 Laboratories guidance.
+The site uses the approved Textbound Adventures Brand Pack v1 palette and visual direction. Textbound Adventures™ is the customer-facing product brand, Somewhere Next Studios™ is the studio/creator brand, and Sync 33 Laboratories is the current publisher and copyright owner. The site does not present Somewhere Next Studios as a legal entity or copyright owner.
 
-Brand assets are intentionally limited:
+Canonical scalable brand assets live in `dist/assets/`:
 
 - `brand-mark.svg` is the production web compass/path mark and favicon.
-- `hero-landscape.jpg` is an optimized, text-free treatment derived from the approved hero direction so all page copy remains accessible HTML.
-- `og.jpg` is an optimized copy of the existing social-sharing artwork, preserved until a separately approved replacement is produced.
+- `textbound-logo-horizontal-light.svg` and `textbound-logo-horizontal-dark.svg` are the wide logo treatments for dark and light grounds.
+- `textbound-logo-stacked-light.svg` and `textbound-logo-stacked-dark.svg` are the compact logo treatments for dark and light grounds.
+
+Generated raster derivatives are also kept in `dist/assets/`:
+
+- `hero-landscape.jpg` is the optimized, text-free hero treatment so all important copy remains accessible HTML.
+- `og.jpg` is the current Open Graph image referenced by page metadata.
+- `textbound-social-profile-1024.png` is the 1024×1024 social/profile artwork.
+
+Do not edit raster derivatives as the source of truth when a vector master is available. Keep the winding path intact whenever the compass mark is reproduced; it is the distinguishing Textbound element.
 ## Product relationship
 
 This repository contains the marketing website only. Product claims should remain aligned with the separate `SaviorOneZero/wayfinder-ios` app repository and the current open branding/legal guidance.
